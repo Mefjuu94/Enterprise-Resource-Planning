@@ -11,9 +11,15 @@
         <property name="hibernate.connection.username">postgres</property>
 
         <mapping class="erp.user.User"/>
-        <mapping class="erp.part.part"/>
-        <mapping class="erp.part.partSet"/>
-        <mapping class="erp.machines.machine"/>
+        <mapping class="erp.part.Part"/>
+        <mapping class="erp.part.PartSet"/>
+
+        <mapping class="erp.machines.Machine"/>
+        <mapping class="erp.machines.MillingMachine"/>
+        <mapping class="erp.machines.TurningMachine"/>
+        <mapping class="erp.machines.Grinder"/>
+        <mapping class="erp.machines.BoringMachine"/>
+        <mapping class="erp.machines.Burner"/>
 
 
     </session-factory>

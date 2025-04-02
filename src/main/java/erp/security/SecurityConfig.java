@@ -28,12 +28,11 @@ public class SecurityConfig {
                 authorizeHttpRequests((requests) -> requests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                         .permitAll().
-                        requestMatchers("/", "/login", "/logout", "/register", "/error/**","/error", "/usersEmails",
-                                "/passwordRetrieve","privacyPolicy", "/resetPassword","/information")
+                        requestMatchers("/", "/login", "/logout", "/register", "/error/**","/error")
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin((form) -> form.loginPage("/login")
-                        .usernameParameter("email")
+                        .usernameParameter("id")
                         .defaultSuccessUrl("/")
                         .failureUrl("/loginFailure")
                         .permitAll());

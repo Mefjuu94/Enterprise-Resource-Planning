@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class partSet {
+public class PartSet {
 
     @Id
     @GeneratedValue
@@ -15,10 +15,13 @@ public class partSet {
     private int WLK;
 
     @OneToMany(mappedBy = "partSet", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<part> parts;
+    private List<Part> Parts;
 
     @Lob
     private byte[] pdf;
+
+    @Lob
+    private byte[] jpg;
 
 
 }

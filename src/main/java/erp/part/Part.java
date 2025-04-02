@@ -2,8 +2,10 @@ package erp.part;
 
 import jakarta.persistence.*;
 
+import java.time.Duration;
+
 @Entity
-public class part {
+public class Part {
 
     @Id
     @GeneratedValue
@@ -14,9 +16,14 @@ public class part {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "partSetId")
-    private partSet partSet;
+    private PartSet partSet;
 
     @Lob
     private byte[] pdf;
+
+    @Lob
+    private byte[] jpg;
+
+    private Duration duration;
 
 }
