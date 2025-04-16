@@ -1,5 +1,6 @@
 package erp.part;
 
+import erp.machines.MillingMachine;
 import jakarta.persistence.*;
 
 import java.time.Duration;
@@ -25,5 +26,6 @@ public class Part {
     private byte[] jpg;
 
     private Duration duration;
+
 
 }

@@ -10,9 +10,12 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/erp</property>
         <property name="hibernate.connection.username">postgres</property>
 
-        <mapping class="erp.user.User"/>
+        <mapping class="erp.customUser.CustomUser"/>
         <mapping class="erp.part.Part"/>
         <mapping class="erp.part.PartSet"/>
+
+        <mapping class="erp.orders.JobOrder"/>
+        <mapping class="erp.orders.JobOrderHistory"/>
 
         <mapping class="erp.machines.Machine"/>
         <mapping class="erp.machines.MillingMachine"/>

@@ -1,11 +1,11 @@
-package erp.user;
+package erp.customUser;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class User {
+public class CustomUser {
 
     @Id
     @GeneratedValue
@@ -16,14 +16,13 @@ public class User {
     private int privilegeLevel;
     private String name;
 
-    public User(long id, String password, int privilegeLevel, String name) {
-        this.id = id;
+    public CustomUser(String password, int privilegeLevel, String name) {
         this.password = password;
         this.privilegeLevel = privilegeLevel;
         this.name = name;
     }
 
-    public User() {
+    public CustomUser() {
 
     }
 

@@ -1,11 +1,11 @@
 package erp.security;
 
 import erp.databaseUtils.UserDAO;
+import erp.customUser.CustomUser;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import erp.user.User;
 
 @Service
 public class CustomUserSecurityService implements UserDetailsService {
@@ -14,7 +14,7 @@ public class CustomUserSecurityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User customUser = dao.findUserByID(username);
+        CustomUser customUser = dao.findUserByID(username);
 
         return org.springframework.security.core.userdetails.User.withUsername(customUser.getName())
                 .password(customUser.getPassword())

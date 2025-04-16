@@ -1,24 +1,26 @@
 package erp.machines;
 
-import erp.user.User;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import erp.orders.JobOrder;
+import jakarta.persistence.*;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Machine {
     @Id
     @GeneratedValue
     private long id;
 
-    private String name;
-    private long width;
-    private long height;
-    private long depth;
+    @OneToMany(mappedBy = "assignedMachine", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<JobOrder> jobOrders = new ArrayList<>();
 
-    private List<User> whoCanUse;
+
+    //    private List<CustomUser> whoCanUse;
     private boolean isActive;
 
     private Duration totalWorkTime;

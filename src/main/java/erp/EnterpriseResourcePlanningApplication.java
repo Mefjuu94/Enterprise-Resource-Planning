@@ -1,7 +1,6 @@
 package erp;
 
-import erp.machines.Machine;
-import erp.machines.MillingMachine;
+import erp.databaseUtils.MachineDAO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,15 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EnterpriseResourcePlanningApplication {
 
     public static void main(String[] args) {
-        Machine miling = new MillingMachine();
-        miling.start();
         SpringApplication.run(EnterpriseResourcePlanningApplication.class, args);
 
-
-       miling.stop();
-
-
-        System.out.println(miling.getTotalWorkTime());
+        MachineDAO machineDAO = new MachineDAO();
+//        System.out.println(machineDAO.findMachineID(String.valueOf(1)));
 
     }
 }

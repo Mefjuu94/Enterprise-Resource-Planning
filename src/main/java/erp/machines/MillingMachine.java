@@ -1,16 +1,27 @@
 package erp.machines;
 
-import java.util.List;
 
+import jakarta.persistence.*;
+
+import java.util.Objects;
+
+@Entity
 public class MillingMachine extends Machine {
-    private List<Long> productionOrder;
+
     private String name;
 
+    public MillingMachine(String name) {
+        this.name = name;
+    }
+
+    public MillingMachine() {
+
+    }
 
     @Override
     public void start() {
 
-        System.out.println("Machine is starrting: ");
+        System.out.println("Machine " + name + " is starrting: ");
         startTask();
     }
 
@@ -24,4 +35,31 @@ public class MillingMachine extends Machine {
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MillingMachine that = (MillingMachine) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return "MillingMachine{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
