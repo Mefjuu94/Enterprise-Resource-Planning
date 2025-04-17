@@ -1,6 +1,8 @@
 package erp;
 
+import erp.customUser.CustomUser;
 import erp.databaseUtils.MachineDAO;
+import erp.databaseUtils.UserDAO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,8 +12,9 @@ public class EnterpriseResourcePlanningApplication {
     public static void main(String[] args) {
         SpringApplication.run(EnterpriseResourcePlanningApplication.class, args);
 
-        MachineDAO machineDAO = new MachineDAO();
-//        System.out.println(machineDAO.findMachineID(String.valueOf(1)));
+//        CustomUser customUser = new CustomUser("123",0,"testUser1");
+//        UserDAO userDAO = new UserDAO();
+//        userDAO.createUser(customUser);
 
     }
 }

@@ -1,0 +1,53 @@
+package erp.controller;
+
+import erp.customUser.CustomUser;
+import erp.databaseUtils.UserDAO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class SecurityController {
+
+    private final UserDAO dao = new UserDAO();
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "success";
+    }
+
+    @GetMapping("/logout")
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "logout";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(CustomUser customUser, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            return "/passwordRetrieve";
+        }
+
+        if (dao.createUser(customUser)) {
+            String nextPage = "/";
+            model.addAttribute("nextPage", nextPage);
+
+            return "actionSuccess";
+        } else {
+            String errorMessage = "Something went wrong: cannot register user!";
+            model.addAttribute("errorMessage", errorMessage);
+            return "/error/generic";
+        }
+    }
+}

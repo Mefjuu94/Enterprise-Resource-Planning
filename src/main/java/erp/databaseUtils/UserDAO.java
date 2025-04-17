@@ -23,6 +23,7 @@ public class UserDAO {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
+            customUser.setPassword(passwordEncoder.encode(customUser.getPassword()));
             session.merge(customUser);
             transaction.commit();
 

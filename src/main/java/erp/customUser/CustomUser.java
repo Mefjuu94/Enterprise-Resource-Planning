@@ -57,4 +57,14 @@ public class CustomUser {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "CustomUser{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                ", privilegeLevel=" + privilegeLevel +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

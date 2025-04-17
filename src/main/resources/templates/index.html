@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<div class="tile">
+    <div th:if="${not #authorization.expression('isAuthenticated()')}">
+        <form th:action="@{/login}" method="post">
+            <div>
+                <label>
+                    <input type="text" name="id" placeholder="identification" required/>
+                </label>
+                <i class="bx bxs-user"></i>
+            </div>
+            <div>
+                <label>
+                    <input type="password" name="password" placeholder="Password" required/>
+                </label>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            <input type="submit" value="Log in"/>
+            <a id="passwordRetrieve" href="/sendVerifyCode">Forgot Password?</a>
+        </form>
+    </div>
+
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <div>
+            you are logged in!
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

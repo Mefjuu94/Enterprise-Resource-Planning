@@ -14,7 +14,10 @@ public class CustomUserSecurityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println(username);
         CustomUser customUser = dao.findUserByID(username);
+
+        System.out.println(customUser);
 
         return org.springframework.security.core.userdetails.User.withUsername(customUser.getName())
                 .password(customUser.getPassword())
